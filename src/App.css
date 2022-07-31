@@ -1,0 +1,114 @@
+* body {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+#root {
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}
+
+#gameBoard {
+  text-align: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding-top: 10vh;
+  padding-bottom: 3vh;
+  font-family: fangsong;
+  font-size: 3rem;
+}
+
+.word-row {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+.letter-box {
+  height: 60px;
+  width: 60px;
+  display: inline-block;
+  border: solid 1px #3a3a3c;
+  margin: 3px;
+  color: white;
+  background-color: black;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  padding-top: 11px;
+  box-sizing: border-box;
+}
+
+#keyboard {
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+}
+
+.keyboard-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.keyboard-letter {
+  border: solid 1px gray;
+  margin: 2px 2px 0 0;
+  width: 50px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: gray;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.correct-letter {
+  background-color: #538d4e;
+  border: none;
+}
+
+.wrong-spot {
+  background-color: #b59f3b;
+  border: none;
+}
+
+.not-found {
+  background-color: #3a3a3c;
+  border: none;
+}
+
+.letter-box-transform {
+  animation: flip-box 400ms;
+  animation-iteration-count: 1;
+}
+
+@keyframes flip-box {
+  0% {
+    transform: scaleY(1);
+  }
+
+  45% {
+    transform: scaleY(0);
+  }
+
+  80% {
+    transform: scaleY(1.3);
+  }
+
+  100% {
+    transform: scaleY(1)
+  }
+}
