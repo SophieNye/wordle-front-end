@@ -37,20 +37,3 @@ export const checkWord = (letters, guessedWord, allLetters) => {
     return { result, gameWon, lettersUsed }
 
 }
-
-export function setGuesses(state, action) {
-    const { key, guessIndex, setGuessIndex, currentRow } = action.payload;
-    const newState = [...state];
-    switch (action.type) {
-        case 'addGuess':
-            newState[currentRow][guessIndex] = key;
-            setGuessIndex(guessIndex + 1);
-            return newState;
-        case 'deleteGuess':
-            newState[currentRow][guessIndex - 1] = '';
-            setGuessIndex(guessIndex - 1);
-            return newState;
-        default:
-            break;
-    };
-};

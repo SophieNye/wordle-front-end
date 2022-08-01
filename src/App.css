@@ -50,7 +50,7 @@ header {
 #keyboard {
   display: flex;
   flex-direction: column;
-  padding-top: 80px;
+  padding-top: 6vh;
 }
 
 .keyboard-row {

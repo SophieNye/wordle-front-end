@@ -18,7 +18,7 @@ function WordRow({
                 row={row}
                 letterPosition={i}
                 key={i}
-                isCurrentRow={currentRow-1 === row}
+                isCurrentRow={currentRow - 1 === row}
             />
         );
     };
