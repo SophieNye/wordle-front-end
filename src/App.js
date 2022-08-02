@@ -125,7 +125,7 @@ function App() {
       </header>
       {rows}
       {gameWon && "Game Won!"}
-      {gameWon === false && "Game Lost"}
+      {gameWon === false && `Correct Word: ${word.toUpperCase()}`}
       <Keyboard allLetters={allLetters} />
     </div>
   );
