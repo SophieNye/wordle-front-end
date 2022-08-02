@@ -25,7 +25,6 @@ function App() {
       ['', '', '', '', '']
     ]);
   const [guessIndex, setGuessIndex] = useState(0);
-  const [currentGuess, setCurrentGuess] = useState(0);
   const [guessResults, setGuessResults] = useState([]);
   const [gameWon, setGameWon] = useState(null);
   const [allLetters, setAllLetters] = useState({});
@@ -62,7 +61,6 @@ function App() {
       setGameWon(gameWon);
       setCurrentRow(currentRow => currentRow + 1);
       setGuessIndex(0);
-      setCurrentGuess(currentGuess => currentGuess + 1);
     }
 
     // remove letter inside of guess as long as it's not the first guess
@@ -133,7 +131,7 @@ function App() {
 };
 
 const useEventListener = (event, handler) => {
-  // save instance of handler so that an eventListener isn't added every time one of the depenencies on handler is updated
+  // save handler so that an eventListener isn't added every time one of the depenencies on handler changes
   const savedHandler = useRef();
 
   useEffect(() => {
