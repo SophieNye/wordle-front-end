@@ -99,7 +99,7 @@ function App() {
     ]
   );
 
-  useEventListener('keydown', handler, gameWon);
+  useEventListener('keydown', handler);
 
   const rows = [];
   for (let i = 0; i <= 5; i += 1) {
