@@ -15,7 +15,6 @@ function App() {
   let [word, setWord] = useState('');
   let [correctLetters, setCorrectLetters] = useState([]);
   const [currentRow, setCurrentRow] = useState(0);
-  const [guessResults, setGuessResults] = useState([]);
   const [guesses, setGuesses] = useState(
     [
       ['', '', '', '', ''],
@@ -27,6 +26,7 @@ function App() {
     ]);
   const [guessIndex, setGuessIndex] = useState(0);
   const [currentGuess, setCurrentGuess] = useState(0);
+  const [guessResults, setGuessResults] = useState([]);
   const [gameWon, setGameWon] = useState(null);
   const [allLetters, setAllLetters] = useState({});
 
@@ -55,12 +55,14 @@ function App() {
     // if user wants to submit word with enter key, check that all spaces are filled
     if (key === "Enter" && guessIndex === 5) {
       const { result, gameWon, lettersUsed } = checkWord(correctLetters, guesses[currentRow]);
-      setAllLetters({ ...allLetters, ...lettersUsed });
-      setGuessResults([...guessResults, [...result]]);
+      setAllLetters(allLetters => {
+        return { ...allLetters, ...lettersUsed }
+      });
+      setGuessResults(guessResults => [...guessResults, [...result]]);
       setGameWon(gameWon);
       setCurrentRow(currentRow => currentRow + 1);
       setGuessIndex(0);
-      setCurrentGuess(currentGuess + 1);
+      setCurrentGuess(currentGuess => currentGuess + 1);
     }
 
     // remove letter inside of guess as long as it's not the first guess
@@ -95,10 +97,7 @@ function App() {
       currentRow,
       guesses,
       correctLetters,
-      currentGuess,
-      guessResults,
-      gameWon,
-      allLetters
+      gameWon
     ]
   );
 
@@ -124,8 +123,10 @@ function App() {
         Wordle
       </header>
       {rows}
-      {gameWon && "Game Won!"}
-      {gameWon === false && `Correct Word: ${word.toUpperCase()}`}
+      <div id="game-result">
+        {gameWon && "You win!"}
+        {gameWon === false && `Correct Word: ${word.toUpperCase()}`}
+      </div>
       <Keyboard allLetters={allLetters} />
     </div>
   );
